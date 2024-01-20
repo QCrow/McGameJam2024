@@ -52,7 +52,7 @@ public abstract class BasicPiece : MonoBehaviour
         Vector3 newDir = Direction - diff;
         float angle = Vector3.SignedAngle(newDir, transform.forward,Vector3.up);
         Debug.Log(angle);
-        if( 90f > angle && angle > -90f ){
+        if( transform.up.y > 0 ){
             transform.localEulerAngles =  transform.localEulerAngles - new Vector3(0f,angle,0f);
         }else{
             transform.localEulerAngles =  transform.localEulerAngles + new Vector3(0f,angle,0f);
