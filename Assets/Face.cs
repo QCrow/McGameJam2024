@@ -1,4 +1,5 @@
 using Kociemba;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.Mathematics;
@@ -150,6 +151,141 @@ public class Face: MonoBehaviour
             return (0, 0);
         }
     }
+
+    public List<List<(string finalside, int finalx, int finaly)>> GetAllPossiblepositions(string chesstype, int range, (String side, int curx, int cury) current_position)
+    {
+        string currentSide = current_position.side;
+        int currentX = current_position.curx;
+        int currentY = current_position.cury;
+
+        List<List<(string finalside, int finalx, int finaly)>> moveinfo = new List<List<(string finalside, int finalx, int finaly)>>();
+
+        if (chesstype == "car")
+        {
+            List<(int, int)> moves = new List<(int, int)>();
+            for (int i = 0; i < range; i++)
+            {
+                moves.Add((1, 0));
+            }
+            moveinfo.Add(ResolveUnitStep(current_position, moves));
+
+            List<(int, int)> moves_2 = new List<(int, int)>();
+            for (int i = 0; i < range; i++)
+            {
+                moves_2.Add((0, 1));
+            }
+            moveinfo.Add(ResolveUnitStep(current_position, moves_2));
+
+            List<(int, int)> moves_3 = new List<(int, int)>();
+            for (int i = 0; i < range; i++)
+            {
+                moves_3.Add((-1, 0));
+            }
+            moveinfo.Add(ResolveUnitStep(current_position, moves_3));
+
+            List<(int, int)> moves_4 = new List<(int, int)>();
+
+            for (int i = 0; i < range; i++)
+            {
+                moves_4.Add((0, -1));
+            }
+            moveinfo.Add(ResolveUnitStep(current_position, moves_4));
+
+
+        }
+
+        if (chesstype == "ele")
+        {
+            List<(int, int)> moves = new List<(int, int)>();
+            var moves1 = new List<(int, int)>() { (0,1), (1, 0) };
+            var moves2 = new List<(int, int)>() { (0, -1), (1, 0)};
+            var moves3 = new List<(int, int)>() { (0, 1), (-1, 0)};
+            var moves4 = new List<(int, int)>() { (0, -1), (-1, 0)};
+            moveinfo.Add(ResolveUnitStep(current_position, moves1));
+            moveinfo.Add(ResolveUnitStep(current_position, moves2));
+            moveinfo.Add(ResolveUnitStep(current_position, moves3));
+            moveinfo.Add(ResolveUnitStep(current_position, moves4));
+        }
+
+        if (chesstype == "horse")
+        {
+            List<(int, int)> moves = new List<(int, int)>
+         {
+             (0,1),
+             (1, 0),
+             (1,0),
+         };
+
+            moveinfo.Add(ResolveUnitStep(current_position, moves));
+
+            List<(int, int)> moves_2 = new List<(int, int)>
+         {
+             (0,-1),
+             (1, 0),
+             (1,0),
+         };
+
+            moveinfo.Add(ResolveUnitStep(current_position, moves_2));
+
+            List<(int, int)> moves_3 = new List<(int, int)>
+         {
+             (0,1),
+             (-1, 0),
+             (-1,0),
+         };
+
+            moveinfo.Add(ResolveUnitStep(current_position, moves_3));
+
+            List<(int, int)> moves_4 = new List<(int, int)>
+         {
+             (0,-1),
+             (-1, 0),
+             (-1,0),
+         };
+
+            moveinfo.Add(ResolveUnitStep(current_position, moves_4));
+
+            List<(int, int)> moves_5 = new List<(int, int)>
+         {
+             (1,0),
+             (0, 1),
+             (0,1),
+         };
+
+            moveinfo.Add(ResolveUnitStep(current_position, moves_5));
+
+            List<(int, int)> moves_6 = new List<(int, int)>
+         {
+             (-1,0),
+             (0, 1),
+             (0,1),
+         };
+
+            moveinfo.Add(ResolveUnitStep(current_position, moves_6));
+
+            List<(int, int)> moves_7 = new List<(int, int)>
+         {
+             (1,0),
+             (0, -1),
+             (0,-1),
+         };
+
+            var list = ResolveUnitStep(current_position, moves_7);
+
+            moveinfo.Add(ResolveUnitStep(current_position, moves_7));
+
+            List<(int, int)> moves_8 = new List<(int, int)>
+         {
+             (-1,0),
+             (0, -1),
+             (0,-1),
+         };
+
+            moveinfo.Add(ResolveUnitStep(current_position, moves_8));
+        }
+        return moveinfo;
+    }
+
 
     public List<(string finalside, int finalx, int finaly)> ResolveUnitStep((string initside, int initx, int inity) previousPosition, List<(int moveX, int moveY)> unitMovementVectors)
     {
