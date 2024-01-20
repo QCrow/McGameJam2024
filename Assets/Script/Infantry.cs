@@ -5,14 +5,14 @@ using UnityEngine;
 public class Infantry : BasicPiece
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public override void updateReachableList(){
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    }
+    public override void updateWalkableList(){
+
+    }
+    
+    public override void Attack(BasicPiece target){
+
     }
 }
