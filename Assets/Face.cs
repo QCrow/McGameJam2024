@@ -1,5 +1,6 @@
 using Kociemba;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.Mathematics;
 using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
@@ -133,36 +134,66 @@ public class Face: MonoBehaviour
         return adjacentFaces;
     }
 
+    public (int finalx, int finaly) CubeTuple((int x, int y) Coordinate)
+    {
+        if (Coordinate.x == 0)
+        {
+            //(0,y) goes up or down 
+            if (Coordinate.y > 0) return (-1, 0);
+            else return (1, 0);
+        }else if(Coordinate.y == 0) {
+            if (Coordinate.x > 0) return (0, 1);
+            else return (0, -1);
+        }
+        else
+        {
+            return (0, 0);
+        }
+    }
+
     public List<(string finalside, int finalx, int finaly)> ResolveUnitStep((string initside, int initx, int inity) previousPosition, List<(int moveX, int moveY)> unitMovementVectors)
     {
+        //for(int q= 0; q < unitMovementVectors.Count; q++)
+        //{
+            //unitMovementVectors[q] = CubeTuple(unitMovementVectors[q]);
+           // Debug.Log(unitMovementVectors[q]);
+        //}
         List<(string finalSide, int finalX, int finalY)> movementSteps = new List<(string, int, int)>();
         int currentPositionX = previousPosition.initx;
         int currentPositionY = previousPosition.inity;
+        var currentSide = previousPosition.initside;
         for (int i=0; i< unitMovementVectors.Count; i++)
         {
-            int expectedx = 0;
-            int expectedy = 0;
+            int expectedx = currentPositionX;
+            int expectedy = currentPositionY;
+            //var modifiedTuple = CubeTuple((unitMovementVectors[i].moveX, unitMovementVectors[i].moveY));
             expectedx += unitMovementVectors[i].moveX;
             expectedy += unitMovementVectors[i].moveY;
-            if (InCurrentSide(expectedx, expectedy))
+            //Debug.Log("ExpectedX"+expectedx);
+            //Debug.Log("ExpectedY"+expectedy);
+            
+            var direction = GetDirection(unitMovementVectors[i].moveX, unitMovementVectors[i].moveY);
+            //Debug.Log(InCurrentSide(expectedx, expectedy, direction));
+            if (InCurrentSide(expectedx, expectedy, direction))
             {
-                movementSteps.Add((previousPosition.initside, expectedx, expectedy));
-                currentPositionX = expectedx;
-                currentPositionY = expectedy;
+                var modifiedTuple = CubeTuple((unitMovementVectors[i].moveX, unitMovementVectors[i].moveY));
+                movementSteps.Add((currentSide, currentPositionX+modifiedTuple.finalx, currentPositionY+modifiedTuple.finaly));
+                currentPositionX += modifiedTuple.finalx;
+                currentPositionY += modifiedTuple.finaly;
             }
             else
             {
-                var direction = GetDirection(unitMovementVectors[i].moveX, unitMovementVectors[i].moveY);
                 var targetSide = GetAdjacentSide(previousPosition.initside, direction);
                 //map new side index, add to movementSteps, modify current position after add in list movements
                 var positionOnNewSide=GetNewSideFirstPosition((currentPositionX, currentPositionY), direction, previousPosition.initside);
                 movementSteps.Add((targetSide, positionOnNewSide.finalx, positionOnNewSide.finaly));
                 currentPositionX = positionOnNewSide.finalx;
                 currentPositionY = positionOnNewSide.finaly;
+                currentSide = targetSide;
                 for (int j = i+1; j < unitMovementVectors.Count; j++)
                 {
-                    ModifyTuple(unitMovementVectors[j], previousPosition.initside, targetSide);
-             
+                    unitMovementVectors[j] = ModifyTuple(unitMovementVectors[j], previousPosition.initside, targetSide);
+                    Debug.Log(unitMovementVectors[j].moveX+" "+unitMovementVectors[j].moveY);
                 }
             }
         }
@@ -285,9 +316,28 @@ public class Face: MonoBehaviour
     }
 
 
-    public bool InCurrentSide(int x, int y)
+    public bool InCurrentSide(int x, int y, string direction)
     {
-        return (x >= 0 && x <= 2 && y >= 0 && y <= 2);
+        if((x==0)&& direction == "Up")
+        {
+            return false;
+        }
+        else if((y==0)&& direction == "Left")
+        {
+            return false;
+        }
+        else if ((x == 2) && direction == "Down")
+        {
+            return false;
+        }
+        else if ((y == 2) && direction == "Right")
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public string GetAdjacentSide(string currentSide, string direction)

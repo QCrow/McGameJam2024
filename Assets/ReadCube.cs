@@ -35,7 +35,7 @@ public class ReadCube : MonoBehaviour
         cubeState.LogStateString();
         cubeState.AssignFaceAdjacent();
         //debug
-        List<(int, int)> movementVectors = new List<(int, int)> { (0, 1), (0, 1), (1, 0) };
+        List<(int, int)> movementVectors = new List<(int, int)> { (0,1), (1,0), (1,0)};
         var result = cubeState.front[0].GetComponent<Face>().ResolveUnitStep(("Front", 0, 0), movementVectors);
         foreach(var x in result)
         {
