@@ -7,7 +7,7 @@ public abstract class BasicPiece : MonoBehaviour
 
     protected GameObject mainCamera;
 
-    protected GameObject holder;
+    protected Player holder;
     [Header("Attack")]
     [SerializeField]
     protected int _attackDistance;
@@ -28,7 +28,7 @@ public abstract class BasicPiece : MonoBehaviour
         if(WalkableList.Contains(targetSquare)){
             //self.transform.position = targetSquare.getPosition();
             //transform.rotation = Quaternion.FromToRotation(Vector3.up, targetSquare.getNormal());
-            //holder.decreaseActionPoint()
+            holder.decreaseActionPoint();
         }
     }  
     protected void LookAtWithFrozenAxis(Vector3 target){
