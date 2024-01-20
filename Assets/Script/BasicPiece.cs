@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
 public abstract class BasicPiece : MonoBehaviour
@@ -19,8 +20,8 @@ public abstract class BasicPiece : MonoBehaviour
     public bool isUsable = true;
     protected int _walkDistance;
     protected bool isSelected = false;
-    public List<GameObject> WalkableList;
-    public List<GameObject> ReachableList;
+    public List<Face> WalkableList;
+    public List<Face> ReachableList;
     public abstract void updateReachableList();
     public abstract void updateWalkableList();
 
@@ -35,10 +36,11 @@ public abstract class BasicPiece : MonoBehaviour
     }
 
 
-    protected void MoveTo(GameObject targetSquare){
+    protected void MoveTo(Face targetSquare){
         if(WalkableList.Contains(targetSquare)){
-            //self.transform.position = targetSquare.getPosition();
-            //transform.rotation = Quaternion.FromToRotation(Vector3.up, targetSquare.getNormal());
+            transform.SetParent(targetSquare.transform);
+            transform.localPosition = new Vector3(0,1,0);
+            transform.localEulerAngles = new Vector3(0,0,0);
             holder.decreaseActionPoint();
             updateReachableList();
             updateWalkableList();
