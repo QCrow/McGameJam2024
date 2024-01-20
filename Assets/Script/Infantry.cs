@@ -7,36 +7,36 @@ public class Infantry : BasicPiece
 {
     // Start is called before the first frame update
     public override void updateReachableList(){
-        /*
-        Face curf = transform.parent.gameObject.getComponent<Dace>();
+        
+        Face curf = transform.parent.gameObject.GetComponent<Face>();
         List<Face> availableFace = curf.getAvailableFace(GetType().Name);
         List<Face> newRes = new List<Face>();
         foreach (Face f in availableFace){
-            if(f.isOccupied){
-                if(holder.pieces.Conttains(f)){
+            if(f.transform.childCount > 0){
+                if(holder.pieces.Contains(f.transform.GetChild(0).gameObject.GetComponent<BasicPiece>())){
                     continue;
                 }
                 newRes.Add(f);
             }
         }
-        */
+        
         //ReachableList = newRes;
     }
 
 
     
     public override void updateWalkableList(){
-        /*
-        Face curf = transform.parent.gameObject.getComponent<Dace>();
+        
+        Face curf = transform.parent.gameObject.GetComponent<Face>();
         List<Face> availableFace = curf.getAvailableFace(GetType().Name);
         List<Face> newRes = new List<Face>();
         foreach (Face f in availableFace){
-            if(f.isOccupied){
+            if(f.transform.childCount > 0){
                 continue;
             }
             newRes.Add(f);
         }
-        */
+        
         //WalkableListt = newRes;
     }
 
