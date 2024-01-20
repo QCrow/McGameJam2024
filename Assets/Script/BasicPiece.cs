@@ -46,7 +46,7 @@ public abstract class BasicPiece : MonoBehaviour
     }  
     protected void LookAtWithFrozenAxis(Vector3 target){
         Vector3 up = transform.up;
-        Debug.Log(transform.up);
+        //Debug.Log(transform.up);
         Vector3 Direction = target - transform.position;
         Vector3 diff = Vector3.Project(Direction, transform.up);
         Vector3 newDir = Direction - diff;
