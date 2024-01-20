@@ -66,27 +66,30 @@ public class GameController : MonoBehaviour
             Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
 
             
-            /*
-            TODO: inplement getPieceAvailable Move
+            
+            //TODO: inplement getPieceAvailable Move
             
             List<Face> availableFaces = currentSelectedPiece.WalkableList;
             List<Face> attackableFaces =  currentSelectedPiece. ReachableList;;
             if(availableFaces.Contains(hit.transform.GetComponent<Face>())){
-                Faces f = hit.transform.GetComponent<Face>();
+                Face f = hit.transform.GetComponent<Face>();
                 if(Input.GetKeyDown(KeyCode.Mouse0)){
-                    currentSelectedPiece.Moveto(f);
+                    
+
+                    currentSelectedPiece.MoveTo(f);
+                    
                     currentSelectedPiece = null;
                 }
             }
             if(attackableFaces.Contains(hit.transform.GetComponent<Face>())){
-                Faces f = hit.transform.GetComponent<Face>();
-                BasicPiece p = Faces.getCurrentPiece();
+                Face f = hit.transform.GetComponent<Face>();
+                BasicPiece p = Face.getCurrentPiece();
                 if(Input.GetKeyDown(KeyCode.Mouse0)){
                     currentSelectedPiece.Attack(p);
                     currentSelectedPiece = null;
                 }
             }
-            */
+            
         }
     }
 

@@ -36,7 +36,7 @@ public abstract class BasicPiece : MonoBehaviour
     }
 
 
-    protected void MoveTo(Face targetSquare){
+    public void MoveTo(Face targetSquare){
         if(WalkableList.Contains(targetSquare)){
             transform.SetParent(targetSquare.transform);
             transform.localPosition = new Vector3(0,1,0);

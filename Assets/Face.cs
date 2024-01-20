@@ -20,7 +20,7 @@ public class Face: MonoBehaviour
     public Transform CurrentTransform;
 
 
-    private CubeState cubeState;
+    public CubeState cubeState;
     void Start()
     {
         cubeState = FindObjectOfType<CubeState>();
@@ -150,6 +150,14 @@ public class Face: MonoBehaviour
         {
             return (0, 0);
         }
+    }
+
+    public (String s, int curx, int cury) getSide(){
+        
+        (String s, int curx, int cury) tuple = FindFacePosition(Name,cubeState.GetStateDictionary());
+
+        return tuple;
+
     }
 
     public List<List<(string finalside, int finalx, int finaly)>> GetAllPossiblepositions(string chesstype, int range, (String side, int curx, int cury) current_position)
