@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class CubeState : MonoBehaviour
 {
@@ -54,30 +55,94 @@ public class CubeState : MonoBehaviour
         }
     }
 
-    string GetSideString(List<GameObject> side)
+    string[,] GetSideString(List<GameObject> side)
     {
-        string sideString = "";
-        foreach (GameObject face in side)
+        string[,] sideArray = new string[3, 3];
+        for (int i = 0; i < side.Count; i++)
         {
-            sideString += face.name[0].ToString();
+            int row = i / 3; // Integer division to get the row
+            int col = i % 3; // Modulo to get the column
+            sideArray[row, col] = side[i].GetComponent<Face>().Name;
         }
-        return sideString;
+        return sideArray;
     }
 
-    public string GetStateString()
+    public void LogStateString()
     {
-        string stateString = "";
-        stateString += GetSideString(up);
-        stateString += "\n";
-        stateString += GetSideString(right);
-        stateString += "\n";
-        stateString += GetSideString(front);
-        stateString += "\n";
-        stateString += GetSideString(down);
-        stateString += "\n";
-        stateString += GetSideString(left);
-        stateString += "\n";
-        stateString += GetSideString(back);
-        return stateString;
+        var stateDictionary = GetStateDictionary();
+        string fullStateString = "";
+
+        foreach (KeyValuePair<string, string[,]> entry in stateDictionary)
+        {
+            string key = entry.Key;
+            string[,] side = entry.Value;
+            string sideString = key + ":\n";
+
+            for (int i = 0; i < side.GetLength(0); i++) // Rows
+            {
+                for (int j = 0; j < side.GetLength(1); j++) // Columns
+                {
+                    sideString += side[i, j] + "  ";
+                }
+                sideString += "\n"; // New line at the end of each row
+            }
+
+            fullStateString += sideString + "\n"; // Append each side's string to the full state string
+        }
+
+        Debug.Log(fullStateString); // Log the entire state in one message
+
     }
+
+
+
+    public Dictionary<string, string[,]> GetStateDictionary()
+    {
+        var stateDictionary = new Dictionary<string, string[,]>
+        {
+            { "Up", GetSideString(up) },
+            { "Right", GetSideString(right) },
+            { "Front", GetSideString(front) },
+            { "Down", GetSideString(down) },
+            { "Left", GetSideString(left) },
+            { "Back", GetSideString(back) }
+        };
+        return stateDictionary;
+    }
+
+    public void AssignFaceAdjacent()
+    {
+        foreach(var x in up)
+        {
+            var Face = x.GetComponent<Face>();
+            Face.AdjacentFaces = Face.FourAdjacentSides();
+        }
+        foreach (var x in down)
+        {
+            var Face = x.GetComponent<Face>();
+            Face.AdjacentFaces = Face.FourAdjacentSides();
+        }
+        foreach (var x in left)
+        {
+            var Face = x.GetComponent<Face>();
+            Face.AdjacentFaces = Face.FourAdjacentSides();
+        }
+        foreach (var x in right)
+        {
+            var Face = x.GetComponent<Face>();
+            Face.AdjacentFaces = Face.FourAdjacentSides();
+        }
+        foreach (var x in front)
+        {
+            var Face = x.GetComponent<Face>();
+            Face.AdjacentFaces = Face.FourAdjacentSides();
+        }
+        foreach (var x in back)
+        {
+            var Face = x.GetComponent<Face>();
+            Face.AdjacentFaces = Face.FourAdjacentSides();
+        }
+    }
+
+
 }

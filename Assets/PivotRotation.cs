@@ -122,7 +122,7 @@ public class PivotRotation : MonoBehaviour
             CubeState.autoRotating = false;
             autoRotating = false;
             dragging = false;
-            Debug.Log(cubeState.GetStateString());
+            cubeState.LogStateString();
         }
     }         
 }

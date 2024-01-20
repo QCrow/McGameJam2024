@@ -336,8 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9648ca164fca94458d46126a1f9891e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeState: {fileID: 0}
-  readCube: {fileID: 0}
 --- !u!114 &22452987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,9 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ead8ef99b0fea342a1ec8194ed4a33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  readCube: {fileID: 0}
-  cubeState: {fileID: 0}
-  doOnce: 1
 --- !u!4 &25451166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6916545666834172400, guid: af4383798923b8446b523ca30ec1bbd2, type: 3}
@@ -6023,6 +6018,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 22452981}
     m_Modifications:
+    - target: {fileID: 5364914445663064196, guid: af4383798923b8446b523ca30ec1bbd2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5431805527815277667, guid: af4383798923b8446b523ca30ec1bbd2, type: 3}
       propertyPath: m_IsActive
       value: 0

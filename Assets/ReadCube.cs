@@ -32,7 +32,8 @@ public class ReadCube : MonoBehaviour
         cubeMap = FindObjectOfType<CubeMap>();
         ReadState();
         CubeState.started = true;
-        Debug.Log(cubeState.GetStateString());
+        cubeState.LogStateString();
+        cubeState.AssignFaceAdjacent();
     }
 
     // Update is called once per frame
