@@ -41,7 +41,4 @@ public abstract class BasicPiece : MonoBehaviour
     void Update(){
         LookAtWithFrozenAxis(mainCamera.transform.position);
     }
-
-    
-
 }
