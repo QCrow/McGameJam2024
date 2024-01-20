@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class SelectFace : MonoBehaviour
 {
@@ -23,7 +24,6 @@ public class SelectFace : MonoBehaviour
         {
             // read the current state of the cube            
             readCube.ReadState();
-
             // raycast from the mouse towards the cube to see if a face is hit  
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

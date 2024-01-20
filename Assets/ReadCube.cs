@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ReadCube : MonoBehaviour
 {
+    //six red ball
     public Transform tUp;
     public Transform tDown;
     public Transform tLeft;
@@ -27,14 +28,11 @@ public class ReadCube : MonoBehaviour
     void Start()
     {
         SetRayTransforms();
-
-
         cubeState = FindObjectOfType<CubeState>();
         cubeMap = FindObjectOfType<CubeMap>();
         ReadState();
         CubeState.started = true;
-       
-
+        Debug.Log(cubeState.GetStateString());
     }
 
     // Update is called once per frame
@@ -57,11 +55,44 @@ public class ReadCube : MonoBehaviour
         cubeState.front = ReadFace(frontRays, tFront);
         cubeState.back = ReadFace(backRays, tBack);
 
+        foreach(var x in cubeState.up)
+        {
+            x.GetComponent<Face>().SideString = "up";
+            x.GetComponent<Face>().SideNormal = new Vector3(0, 1, 0);
+        }
+
+        foreach (var x in cubeState.down)
+        {
+            x.GetComponent<Face>().SideString = "down";
+            x.GetComponent<Face>().SideNormal = new Vector3(0, -1, 0);
+        }
+
+        foreach (var x in cubeState.left)
+        {
+            x.GetComponent<Face>().SideString = "left";
+            x.GetComponent<Face>().SideNormal = new Vector3(0, 0, 1);
+        }
+
+        foreach (var x in cubeState.right)
+        {
+            x.GetComponent<Face>().SideString = "right";
+            x.GetComponent<Face>().SideNormal = new Vector3(0, 0, -1);
+        }
+
+        foreach (var x in cubeState.front)
+        {
+            x.GetComponent<Face>().SideString = "front";
+            x.GetComponent<Face>().SideNormal = new Vector3(-1,0,0);
+        }
+
+        foreach (var x in cubeState.back)
+        {
+            x.GetComponent<Face>().SideString = "back";
+            x.GetComponent<Face>().SideNormal = new Vector3(1, 0, 0);
+        }
         // update the map with the found positions
         cubeMap.Set();
-
     }
-
 
     void SetRayTransforms()
     {

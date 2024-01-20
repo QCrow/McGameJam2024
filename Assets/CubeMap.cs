@@ -28,7 +28,6 @@ public class CubeMap : MonoBehaviour
     public void Set()
     {
         cubeState = FindObjectOfType<CubeState>();
-
         UpdateMap(cubeState.front, front);
         UpdateMap(cubeState.back, back);
         UpdateMap(cubeState.left, left);
@@ -43,6 +42,7 @@ public class CubeMap : MonoBehaviour
         int i = 0;
         foreach (Transform map in side)
         {
+            //Debug.Log(i);
             if (face[i].name[0] == 'F')
             {
                 map.GetComponent<Image>().color = new Color(1, 0.5f, 0, 1);
