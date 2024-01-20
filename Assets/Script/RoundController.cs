@@ -28,5 +28,9 @@ public class RoundController : MonoBehaviour
             currentActivePlayer = FirstPlayer;
         }
     }
+
+    public List<BasicPiece> getCurrentPlayerPieces(){
+        return currentActivePlayer.pieces;
+    }
     // Update is called once per frame
 }

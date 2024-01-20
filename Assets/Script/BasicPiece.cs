@@ -5,23 +5,32 @@ using UnityEngine;
 public abstract class BasicPiece : MonoBehaviour
 {
 
-    protected GameObject mainCamera;
+    
 
+    
     protected Player holder;
     [Header("Attack")]
     [SerializeField]
     protected int _attackDistance;
     [Header("Survival")]
     [SerializeField]
-    protected int _endurance;
+    public int _endurance;
+
+    public bool isUsable = true;
     protected int _walkDistance;
     protected bool isSelected = false;
-    protected List<GameObject> WalkableList;
-    protected List<GameObject> ReachableList;
+    public List<GameObject> WalkableList;
+    public List<GameObject> ReachableList;
     public abstract void updateReachableList();
     public abstract void updateWalkableList();
 
-    public abstract void Attack(BasicPiece target);
+    protected void Attack(BasicPiece target){
+        target._endurance--;
+        if(target._endurance <= 0){
+            target.isUsable = false;
+            target.gameObject.SetActive(false);
+        }
+    }
 
 
     protected void MoveTo(GameObject targetSquare){
@@ -39,6 +48,6 @@ public abstract class BasicPiece : MonoBehaviour
         transform.rotation = rotation;
     } 
     void Update(){
-        LookAtWithFrozenAxis(mainCamera.transform.position);
+        LookAtWithFrozenAxis(Camera.main.transform.position);
     }
 }
