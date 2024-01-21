@@ -8033,6 +8033,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3342090266480305, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube7
+      objectReference: {fileID: 0}
+    - target: {fileID: 32520065113277511, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 583212495460818454, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 740243517540127040, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face2
+      objectReference: {fileID: 0}
+    - target: {fileID: 960974600480628672, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456778807764349807, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754177112889424019, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
     - target: {fileID: 1758344724548141578, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: U
@@ -8041,9 +8069,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Up
       objectReference: {fileID: 0}
+    - target: {fileID: 1838701473186034928, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896300347808858162, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908148389911581623, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023543660789122228, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221014000038543240, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube16
+      objectReference: {fileID: 0}
     - target: {fileID: 2580375754344265454, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: Front
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611929732183412051, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704242305140367804, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
       objectReference: {fileID: 0}
     - target: {fileID: 3129904693527007280, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
@@ -8052,6 +8108,14 @@ PrefabInstance:
     - target: {fileID: 3202634333209950068, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: FU
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265703158547851132, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336350518306265608, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube17
       objectReference: {fileID: 0}
     - target: {fileID: 3348980018484673661, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8097,6 +8161,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Back
       objectReference: {fileID: 0}
+    - target: {fileID: 3486840128677787806, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535998767472470072, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568849707938535176, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192578902745668955, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face2
+      objectReference: {fileID: 0}
     - target: {fileID: 4209751331791524524, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: layerMask.m_Bits
       value: 128
@@ -8109,6 +8189,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rubik
       objectReference: {fileID: 0}
+    - target: {fileID: 4824297676230179088, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4915521741494827147, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965752696400718904, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face2
+      objectReference: {fileID: 0}
     - target: {fileID: 5028254336481317624, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: Up
@@ -8117,25 +8209,117 @@ PrefabInstance:
       propertyPath: m_Name
       value: BU
       objectReference: {fileID: 0}
+    - target: {fileID: 5142868676532944835, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
     - target: {fileID: 5164191583183318036, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: U
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425410225037622963, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube22
       objectReference: {fileID: 0}
     - target: {fileID: 5443926796888889867, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: B
       objectReference: {fileID: 0}
+    - target: {fileID: 5484726524310591731, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515030729601838037, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518499148006546067, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
     - target: {fileID: 5722667508137063114, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: D
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857184592772559432, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950589719085749223, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110371681997234131, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face2
       objectReference: {fileID: 0}
     - target: {fileID: 6196220433050602220, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: B
       objectReference: {fileID: 0}
+    - target: {fileID: 6224289223364865633, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
     - target: {fileID: 6489243005382305048, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: F
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504539020472568934, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606111305458609267, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979461453977545898, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632687157049572273, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805905439517052310, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826693941235320894, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880943765345672221, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968511734339496841, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347707808548473645, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351376039884849673, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598199433909454977, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700747149563567838, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752469229269154206, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Cube19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904448016387071738, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
+      propertyPath: m_Name
+      value: Face1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
