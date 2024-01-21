@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public bool isActive;
 
     public int defaultActionPoints = 2;
-    private int actionPoints;
+    public int actionPoints;
 
     void Start(){
         actionPoints = defaultActionPoints;
