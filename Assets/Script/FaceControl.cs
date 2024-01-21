@@ -38,7 +38,7 @@ public class FaceControl : MonoBehaviour
         Vector3 camForward = _camera.transform.forward;
         float axisSign = Mathf.Sign(camForward.x * camForward.y * camForward.z);
         // Define the layer to ignore (replace "LayerToIgnore" with your layer's name)
-        int layerToIgnore = LayerMask.NameToLayer("Square");
+        int layerToIgnore = LayerMask.GetMask("Square", "Piece");
 
         // Create a layer mask that ignores the specified layer
         layerMask = ~(1 << layerToIgnore);
