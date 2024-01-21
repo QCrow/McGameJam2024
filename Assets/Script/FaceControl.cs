@@ -45,7 +45,7 @@ public class FaceControl : MonoBehaviour
             yield return null;
 
             // Keep waiting until the player presses the mouse button.
-            if (!Input.GetMouseButton(0) || RubikControl.Instance.isCubeRotating)
+            if (!Input.GetMouseButton(0) || RubikControl.Instance.isCubeRotating || GameController.KeySelected)
                 continue;
 
                 // Step 1: Fire a ray through the mouse position.

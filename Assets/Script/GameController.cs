@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     public Indicator ReachableIndicatorPrefab;
     public List<Indicator> generatedIndicators;
     public BasicPiece currentSelectedPiece;
+
+    public static bool KeySelected = false;
     void Start()
     {
         generatedIndicators = new List<Indicator>();
@@ -23,6 +25,8 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(RubikControl.Instance.isCubeRotating) return;
+        if(FaceControl.Instance.isDragging) return;
         currentPlayerPieces = rc.getCurrentPlayerPieces();
         checkMouseSelectedPiece();
         checkMouseSelectedPosition();
@@ -56,7 +60,9 @@ public class GameController : MonoBehaviour
             if(currentPlayerPieces.Contains(hit.transform.GetComponent<BasicPiece>()) && hit.transform.GetComponent<BasicPiece>().isUsable){
                 BasicPiece bpSelected = hit.transform.GetComponent<BasicPiece>();
                 if(Input.GetKeyDown(KeyCode.Mouse0)){
+                    KeySelected = true;
                     if(currentSelectedPiece != bpSelected){
+                        KeySelected = true;
                         DestryIndicators();
                         currentSelectedPiece = bpSelected;
                         currentSelectedPiece.updateReachableList();
@@ -70,8 +76,10 @@ public class GameController : MonoBehaviour
 
                         //TODO: indicationg of selected piece
                     }else{
+                        KeySelected = false;
                         currentSelectedPiece = null;
                         Debug.Log("UnSelectingPiece");
+                        
                         DestryIndicators();
                         
                     }
@@ -132,6 +140,7 @@ public class GameController : MonoBehaviour
 
                     currentSelectedPiece.MoveTo(f);
                     DestryIndicators();
+                    KeySelected = false;
                     notifyActionMade();
                     currentSelectedPiece = null;        
                 }
@@ -142,6 +151,7 @@ public class GameController : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.Mouse0)){
                     currentSelectedPiece.Attack(p);
                     DestryIndicators();
+                    KeySelected = false;
                     notifyActionMade();
                     currentSelectedPiece = null;
                 }
