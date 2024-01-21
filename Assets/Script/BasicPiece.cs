@@ -29,7 +29,10 @@ public abstract class BasicPiece : MonoBehaviour
         target._endurance--;
         if(target._endurance <= 0){
             target.isUsable = false;
+            target.holder.pieces.Remove(target);
             target.gameObject.SetActive(false);
+            target.transform.SetParent(null);
+            Destroy(target.gameObject);
         }
         updateReachableList();
         updateWalkableList();

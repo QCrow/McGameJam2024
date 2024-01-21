@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,11 +26,22 @@ public class GameController : MonoBehaviour
         currentPlayerPieces = rc.getCurrentPlayerPieces();
         checkMouseSelectedPiece();
         checkMouseSelectedPosition();
-
+        checkPlayerLose();
 
     }
 
+    private void checkPlayerLose(){
+        if(rc.FirstPlayer.pieces.Count <=0){
+            //rc.FirstPlayer.giveUp();
+            endGameWithWinner(rc.SecondPlayer.PlayerName);
+            return;
 
+        }
+        if(rc.SecondPlayer.pieces.Count <=0){
+            //rc.FirstPlayer.giveUp();
+            endGameWithWinner(rc.FirstPlayer.PlayerName);
+        }
+    }
     private void checkMouseSelectedPiece(){
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -55,12 +67,13 @@ public class GameController : MonoBehaviour
                         GenerateIndicatorOnReachableFaces(bpSelected.ReachableList);
                         //print(bpSelected.WalkableList);
                         GenerateIndicatorOnWalkableFaces(bpSelected.WalkableList);
+
                         //TODO: indicationg of selected piece
                     }else{
                         currentSelectedPiece = null;
                         Debug.Log("UnSelectingPiece");
                         DestryIndicators();
-                        //TODO: indication of selected piece disabled.
+                        
                     }
                 }
             }
@@ -96,10 +109,11 @@ public class GameController : MonoBehaviour
         
     }
     private void checkMouseSelectedPosition(){
+
         if(currentSelectedPiece == null) return;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        int layer_mask = LayerMask.GetMask("PositionNode");
+        int layer_mask = LayerMask.GetMask("Square");
         if ( Physics.Raycast (ray,out hit,100.0f, layer_mask)){
             
             Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
@@ -117,6 +131,7 @@ public class GameController : MonoBehaviour
                     
 
                     currentSelectedPiece.MoveTo(f);
+                    DestryIndicators();
                     notifyActionMade();
                     currentSelectedPiece = null;        
                 }
@@ -126,6 +141,7 @@ public class GameController : MonoBehaviour
                 BasicPiece p = f.getCurrentPiece();
                 if(Input.GetKeyDown(KeyCode.Mouse0)){
                     currentSelectedPiece.Attack(p);
+                    DestryIndicators();
                     notifyActionMade();
                     currentSelectedPiece = null;
                 }

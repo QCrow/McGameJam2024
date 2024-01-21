@@ -11,16 +11,19 @@ public class Infantry : BasicPiece
         
         Face curf = transform.parent.gameObject.GetComponent<Face>();       
         List<Face> availableFace = curf.GetAvailableFaces("horse",2); //bishop or horse or car lol
-        List<Face> ReachableList = new List<Face>();
+        ReachableList = new List<Face>();
         foreach (Face f in availableFace){
             if(f.transform.childCount > 0){
+                Debug.Log("hasChild On Face");
                 if(holder.pieces.Contains(f.transform.GetChild(0).gameObject.GetComponent<BasicPiece>())){
+                    Debug.Log("Is same side");
                     continue;
                 }
+
                 ReachableList.Add(f);
             }
         }
-        
+        //Debug.Log(ReachableList.Count);
         
         
     }
