@@ -3291,10 +3291,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
-  _attackDistance: 3
+  _attackDistance: 2
   _endurance: 3
   isUsable: 1
-  _walkDistance: 3
+  _walkDistance: 2
   WalkableList: []
   ReachableList: []
   PieceType: car
@@ -6249,10 +6249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
-  _attackDistance: 3
+  _attackDistance: 2
   _endurance: 3
   isUsable: 1
-  _walkDistance: 3
+  _walkDistance: 2
   WalkableList: []
   ReachableList: []
   PieceType: bishop
@@ -6905,10 +6905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
-  _attackDistance: 3
+  _attackDistance: 2
   _endurance: 3
   isUsable: 1
-  _walkDistance: 3
+  _walkDistance: 2
   WalkableList: []
   ReachableList: []
   PieceType: bishop
@@ -7627,10 +7627,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
-  _attackDistance: 3
+  _attackDistance: 2
   _endurance: 3
   isUsable: 1
-  _walkDistance: 3
+  _walkDistance: 2
   WalkableList: []
   ReachableList: []
   PieceType: car
@@ -9044,10 +9044,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
-  _attackDistance: 3
+  _attackDistance: 2
   _endurance: 3
   isUsable: 1
-  _walkDistance: 3
+  _walkDistance: 2
   WalkableList: []
   ReachableList: []
   PieceType: horse
@@ -9320,10 +9320,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
-  _attackDistance: 3
+  _attackDistance: 2
   _endurance: 3
   isUsable: 1
-  _walkDistance: 3
+  _walkDistance: 2
   WalkableList: []
   ReachableList: []
   PieceType: horse
