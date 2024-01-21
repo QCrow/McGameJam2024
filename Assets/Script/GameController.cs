@@ -117,8 +117,8 @@ public class GameController : MonoBehaviour
                     
 
                     currentSelectedPiece.MoveTo(f);
-                    
-                    currentSelectedPiece = null;
+                    notifyActionMade();
+                    currentSelectedPiece = null;        
                 }
             }
             if(attackableFaces.Contains(hit.transform.GetComponent<Face>())){
@@ -126,6 +126,7 @@ public class GameController : MonoBehaviour
                 BasicPiece p = f.getCurrentPiece();
                 if(Input.GetKeyDown(KeyCode.Mouse0)){
                     currentSelectedPiece.Attack(p);
+                    notifyActionMade();
                     currentSelectedPiece = null;
                 }
             }
@@ -139,5 +140,9 @@ public class GameController : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
 
+    }
+
+    public void notifyActionMade(){
+        rc.decreaseCurrentPlayerActionPoint();
     }
 }

@@ -41,7 +41,7 @@ public abstract class BasicPiece : MonoBehaviour
             transform.SetParent(targetSquare.transform);
             transform.localPosition = new Vector3(0,1,0);
             transform.localEulerAngles = new Vector3(0,0,0);
-            holder.decreaseActionPoint();
+            //holder.decreaseActionPoint();   //Nolonger doing action decrease with player, use round conteroller method instead, call in Game Manager
             updateReachableList();
             updateWalkableList();
         }
@@ -54,7 +54,8 @@ public abstract class BasicPiece : MonoBehaviour
         Vector3 newDir = Direction - diff;
         float angle = Vector3.SignedAngle(newDir, transform.forward,Vector3.up);
         //Debug.Log(angle);
-        if( transform.up.y > 0 ){
+        
+        if( transform.up.y >=0f ){
             transform.localEulerAngles =  transform.localEulerAngles - new Vector3(0f,angle,0f);
         }else{
             transform.localEulerAngles =  transform.localEulerAngles + new Vector3(0f,angle,0f);

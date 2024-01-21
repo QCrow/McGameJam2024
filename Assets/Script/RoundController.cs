@@ -33,4 +33,11 @@ public class RoundController : MonoBehaviour
         return currentActivePlayer.pieces;
     }
     // Update is called once per frame
+    
+    public void decreaseCurrentPlayerActionPoint(){
+        currentActivePlayer.decreaseActionPoint();
+        if (currentActivePlayer.actionPoints <= 0){
+            changeSide();
+        }
+    }
 }
