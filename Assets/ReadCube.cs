@@ -27,6 +27,7 @@ public class ReadCube : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        layerMask = LayerMask.GetMask("Square");
         SetRayTransforms();
         cubeState = FindObjectOfType<CubeState>();
         cubeMap = FindObjectOfType<CubeMap>();
@@ -37,7 +38,7 @@ public class ReadCube : MonoBehaviour
         //debug
         List<(int, int)> movementVectors = new List<(int, int)> { (0,1), (1,0), (1,0)};
         var result = cubeState.front[0].GetComponent<Face>().GetAllPossiblepositions("car", 2, ("Front", 1, 1));
-        Debug.Log(result.Count);
+        //Debug.Log(result.Count);
         foreach(var x in result)
         {
             var r = "";
@@ -157,7 +158,7 @@ public class ReadCube : MonoBehaviour
         {
             Vector3 ray = rayStart.transform.position;
             RaycastHit hit;
-
+            Physics.Raycast(ray, rayTransform.forward, out hit, Mathf.Infinity, layerMask);
             // Does the ray intersect any objects in the layerMask?
             if (Physics.Raycast(ray, rayTransform.forward, out hit, Mathf.Infinity, layerMask))
             {

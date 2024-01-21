@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3552681939398814005}
   - component: {fileID: 7645220007116303458}
   - component: {fileID: -2637884120806521221}
+  - component: {fileID: 5720969355595213717}
   m_Layer: 6
   m_Name: Face
   m_TagString: Untagged
@@ -105,3 +106,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8187132, y: 0.18743882, z: 1.8122854}
   m_Center: {x: 0.01317656, y: 0.0019853637, z: -0.002769947}
+--- !u!114 &5720969355595213717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530519031587471402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54dd15a8e76bfb14bad6126c7d020346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  FaceColor: {r: 0, g: 0, b: 0, a: 0}
+  AdjacentFaces: []
+  SideNormal: {x: 0, y: 0, z: 0}
+  SideString: 
+  CurrentTransform: {fileID: 0}
+  cubeState: {fileID: 0}
