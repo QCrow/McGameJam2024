@@ -23,9 +23,9 @@ public class IdleImageHolder : MonoBehaviour
     {
         Count += Time.deltaTime;
         if(Count >= interval){
-            int xcount = UnityEngine.Random.Range(0, 10);
-            if(xcount >= 9){
-                StartCoroutine( Blink());
+            int xcount = UnityEngine.Random.Range(0, 100);
+            if(xcount >= 95){
+                this.GetComponent<Image>().sprite = LessCOnstantState;
             }
             this.GetComponent<Image>().sprite = MostConstantState;
             Count = 0f;

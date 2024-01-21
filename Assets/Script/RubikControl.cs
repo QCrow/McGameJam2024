@@ -8,7 +8,7 @@ public class RubikControl : MonoBehaviour
     public Quaternion cubeRotation;
     private bool isLerping = false;
     public bool isCubeRotating = false;
-    private float lerpSpeed = 2f; // Speed of lerp rotation
+    private float lerpSpeed = 5f; // Speed of lerp rotation
     private Camera mainCamera; // Reference to the main camera
 
 
@@ -53,7 +53,7 @@ public class RubikControl : MonoBehaviour
     private void RotateCube()
     {
         Vector3 mouseDelta = Input.mousePosition - previousMousePosition;
-        mouseDelta *= 0.1f; // reduction of rotation speed
+        mouseDelta *= 0.2f; // reduction of rotation speed
 
         // Convert mouse movements into a rotation relative to the camera's view
         Quaternion cameraRotation = Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0);

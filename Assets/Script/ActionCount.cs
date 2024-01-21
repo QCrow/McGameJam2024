@@ -1,6 +1,6 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
+
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 public class ActionCount : MonoBehaviour
@@ -17,7 +17,10 @@ public class ActionCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(rc.currentActivePlayer == null) return;
+        if(rc.currentActivePlayer == player){
+            this.GetComponent<Image>().sprite = images[player.actionPoints];
+        }
         
-        this.GetComponent<Image>().sprite = images[player.actionPoints];
     }
 }

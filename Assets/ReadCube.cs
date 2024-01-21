@@ -34,7 +34,7 @@ public class ReadCube : MonoBehaviour
         ReadState();
         CubeState.started = true;
         cubeState.LogStateString();
-        cubeState.AssignFaceAdjacent();
+        //cubeState.AssignFaceAdjacent();
         //debug
         List<(int, int)> movementVectors = new List<(int, int)> { (0,1), (1,0), (1,0)};
         var result = cubeState.front[0].GetComponent<Face>().GetAllPossiblepositions("car", 2, ("Front", 1, 1));
@@ -106,6 +106,7 @@ public class ReadCube : MonoBehaviour
             x.GetComponent<Face>().SideNormal = new Vector3(1, 0, 0);
         }
         // update the map with the found positions
+        if(cubeMap == null) return;
         cubeMap.Set();
     }
 

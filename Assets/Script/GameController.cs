@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using UnityEditor.Animations;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
