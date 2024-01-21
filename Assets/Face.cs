@@ -460,6 +460,9 @@ public class Face : MonoBehaviour
           string kid = faceName.Split("-")[1];
           GameObject parentname = GameObject.Find(parent);
           Transform child = parentname.transform.Find(kid);
+
+          Debug.Log(child.gameObject.GetComponent<Face>());
+          //child.gameObject.GetComponent<Face>();
           faceList.Add(child.gameObject.GetComponent<Face>());
         }
       }
