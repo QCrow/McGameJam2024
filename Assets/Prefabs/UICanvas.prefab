@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391570ed36b3a854381b22acaa39b7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bp: {fileID: 0}
+  images: []
 --- !u!1 &582508209297574131
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +103,7 @@ GameObject:
   - component: {fileID: 2284529649010748745}
   - component: {fileID: 520828099529098047}
   m_Layer: 5
-  m_Name: P1_Panels (1)
+  m_Name: 'P2_Panels '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,6 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391570ed36b3a854381b22acaa39b7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bp: {fileID: 0}
+  images: []
 --- !u!1 &1560963913078627698
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +350,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391570ed36b3a854381b22acaa39b7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bp: {fileID: 0}
+  images:
+  - {fileID: 21300000, guid: 97d8f4fa077d9954da73ce1719a0f816, type: 3}
+  - {fileID: 21300000, guid: 97d8f4fa077d9954da73ce1719a0f816, type: 3}
+  - {fileID: 21300000, guid: 97d8f4fa077d9954da73ce1719a0f816, type: 3}
 --- !u!1 &1786935828685342366
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +658,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf67914baada0ca46ac9dfa2b54f49da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  images: []
+  images:
+  - {fileID: 21300000, guid: 018b1cd83262dfb45a4cbc1f5df9ddfd, type: 3}
+  - {fileID: 21300000, guid: 018b1cd83262dfb45a4cbc1f5df9ddfd, type: 3}
+  - {fileID: 21300000, guid: 018b1cd83262dfb45a4cbc1f5df9ddfd, type: 3}
   rc: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &3385602767215274147
@@ -741,6 +753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391570ed36b3a854381b22acaa39b7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bp: {fileID: 0}
+  images: []
 --- !u!1 &3485309374892079151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391570ed36b3a854381b22acaa39b7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bp: {fileID: 0}
+  images: []
 --- !u!1 &5104384503886874878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,6 +1498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391570ed36b3a854381b22acaa39b7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bp: {fileID: 0}
+  images: []
 --- !u!1 &9180688490416718367
 GameObject:
   m_ObjectHideFlags: 0

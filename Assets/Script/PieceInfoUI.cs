@@ -8,8 +8,8 @@ public class PieceInfoUI : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    BasicPiece bp;
-    List<Sprite> images;
+    public BasicPiece bp;
+    public List<Sprite> images;
     
     
     void Start()
