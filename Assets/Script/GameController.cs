@@ -49,9 +49,9 @@ public class GameController : MonoBehaviour
     private void checkMouseSelectedPiece(){
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        int layer_mask = LayerMask.GetMask("Piece","PositionalNode");
+        int layer_mask = LayerMask.GetMask("Piece","Square");
         if ( Physics.Raycast (ray,out hit,100.0f, layer_mask)) {
-            if(hit.transform.gameObject.layer == LayerMask.NameToLayer("PositionalNode")){
+            if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Square")){
                 Debug.Log("NotDirectlyOnChessPiece");
                 return;
             }
