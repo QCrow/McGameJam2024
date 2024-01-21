@@ -308,10 +308,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4209751331791524524, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 4673289752925207505, guid: b65b5c65a3d8f4bd1a55b92f40f66a93, type: 3}
       propertyPath: m_Name
       value: Rubik

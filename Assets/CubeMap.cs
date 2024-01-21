@@ -23,7 +23,6 @@ public class CubeMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void Set()
     {
@@ -45,6 +44,7 @@ public class CubeMap : MonoBehaviour
             //Debug.Log(i);
             if (face[i].name[0] == 'F')
             {
+                //Debug.Log(2);
                 map.GetComponent<Image>().color = new Color(1, 0.5f, 0, 1);
             }
             if (face[i].name[0] == 'B')
