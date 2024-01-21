@@ -43,7 +43,7 @@ public class Face : MonoBehaviour
     Vector3 offset = new Vector3(0.1f, 0.1f, 0); // Adjust offset as needed
 
     // Draw the text
-    UnityEditor.Handles.Label(position + offset, text);
+    //UnityEditor.Handles.Label(position + offset, text);
   }
 
   void AssignName()
