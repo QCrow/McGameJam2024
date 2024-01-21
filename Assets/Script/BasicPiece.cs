@@ -9,7 +9,7 @@ public abstract class BasicPiece : MonoBehaviour
     
 
     
-    protected Player holder;
+    public Player holder;
     [Header("Attack")]
     [SerializeField]
     protected int _attackDistance;
@@ -18,14 +18,14 @@ public abstract class BasicPiece : MonoBehaviour
     public int _endurance;
 
     public bool isUsable = true;
-    protected int _walkDistance;
+    public int _walkDistance;
     protected bool isSelected = false;
     public List<Face> WalkableList;
     public List<Face> ReachableList;
     public abstract void updateReachableList();
     public abstract void updateWalkableList();
 
-    protected void Attack(BasicPiece target){
+    public void Attack(BasicPiece target){
         target._endurance--;
         if(target._endurance <= 0){
             target.isUsable = false;
@@ -53,7 +53,7 @@ public abstract class BasicPiece : MonoBehaviour
         Vector3 diff = Vector3.Project(Direction, transform.up);
         Vector3 newDir = Direction - diff;
         float angle = Vector3.SignedAngle(newDir, transform.forward,Vector3.up);
-        Debug.Log(angle);
+        //Debug.Log(angle);
         if( transform.up.y > 0 ){
             transform.localEulerAngles =  transform.localEulerAngles - new Vector3(0f,angle,0f);
         }else{

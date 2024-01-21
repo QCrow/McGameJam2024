@@ -1,11 +1,14 @@
 using Kociemba;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using Unity.Collections;
 using Unity.Mathematics;
 using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEditor.Rendering.InspectorCurveEditor;
@@ -202,7 +205,7 @@ public class Face: MonoBehaviour
 
         }
 
-        if (chesstype == "ele")
+        if (chesstype == "bishop")
         {
             List<(int, int)> moves = new List<(int, int)>();
             var moves1 = new List<(int, int)>() { (0,1), (1, 0) };
@@ -297,11 +300,7 @@ public class Face: MonoBehaviour
 
     public List<(string finalside, int finalx, int finaly)> ResolveUnitStep((string initside, int initx, int inity) previousPosition, List<(int moveX, int moveY)> unitMovementVectors)
     {
-        //for(int q= 0; q < unitMovementVectors.Count; q++)
-        //{
-            //unitMovementVectors[q] = CubeTuple(unitMovementVectors[q]);
-           // Debug.Log(unitMovementVectors[q]);
-        //}
+        
         List<(string finalSide, int finalX, int finalY)> movementSteps = new List<(string, int, int)>();
         int currentPositionX = previousPosition.initx;
         int currentPositionY = previousPosition.inity;
@@ -313,8 +312,6 @@ public class Face: MonoBehaviour
             //var modifiedTuple = CubeTuple((unitMovementVectors[i].moveX, unitMovementVectors[i].moveY));
             expectedx += unitMovementVectors[i].moveX;
             expectedy += unitMovementVectors[i].moveY;
-            //Debug.Log("ExpectedX"+expectedx);
-            //Debug.Log("ExpectedY"+expectedy);
             
             var direction = GetDirection(unitMovementVectors[i].moveX, unitMovementVectors[i].moveY);
             //Debug.Log(InCurrentSide(expectedx, expectedy, direction));
@@ -344,6 +341,59 @@ public class Face: MonoBehaviour
 
         return movementSteps;
     }
+
+
+    public (string key, int row, int col) FindKeyAndIndex(Dictionary<string, string[,]> dict, string targetValue)
+    {
+        foreach (var kvp in dict)
+        {
+            string key = kvp.Key;
+            string[,] matrix = kvp.Value;
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[i, j] == targetValue)
+                    {
+                        return (key, i, j);
+                    }
+                }
+            }
+        }
+        return (null, -1, -1); // Return this if no match is found
+    }
+
+    public List<Face> GetAvailableFaces(string chesstype, int _walkDistance){
+        var dict = cubeState.GetStateDictionary();
+        var keyAndIndex = FindKeyAndIndex(dict, Name);
+        var allPositions = GetAllPossiblepositions(chesstype,_walkDistance,keyAndIndex);
+        var faceList = new List<Face>();
+        if(chesstype == "horse"){
+            foreach(var tuplist in allPositions){
+                var lastTup = tuplist.Last();
+                var faceName = dict[lastTup.finalside][lastTup.finalx,lastTup.finaly];
+                string parent = faceName.Split("-")[0];
+                string kid = faceName.Split("-")[1];
+                GameObject parentname = GameObject.Find(parent);
+                Transform child = parentname.transform.Find(kid);
+                faceList.Add(child.gameObject.GetComponent<Face>());
+            }
+        }else{
+             foreach(var tuplist in allPositions){
+                foreach(var tup in tuplist){
+                    var faceName = dict[tup.finalside][tup.finalx,tup.finaly];
+                    string parent = faceName.Split("-")[0];
+                    string kid = faceName.Split("-")[1];
+                    GameObject parentname = GameObject.Find(parent);
+                    Transform child = parentname.transform.Find(kid);
+                    faceList.Add(child.gameObject.GetComponent<Face>());
+                }
+             }
+        }
+        return faceList;
+    }
+    
 
     public (int finalx, int finaly) GetNewSideFirstPosition((int currentPositionX, int currentPositionY) currentPosition, string direction, string previousSide)
     {
@@ -575,7 +625,11 @@ public class Face: MonoBehaviour
 
         return ("Not Found", -1, -1); // Return this if the face name is not found
     }
+    public BasicPiece getCurrentPiece(){
+        BasicPiece p = transform.GetChild(0).gameObject.GetComponent<BasicPiece>();
 
+        return p;
+    }
     public GameObject FindfaceByname(string faceName)
     {
         GameObject face = GameObject.Find(faceName);

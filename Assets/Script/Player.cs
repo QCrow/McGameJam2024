@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
 
     void Start(){
         actionPoints = defaultActionPoints;
+        foreach(BasicPiece p in pieces){
+            p.holder = this;
+        }
     }
     // Update is called once per frame
     public void decreaseActionPoint(){

@@ -10,11 +10,13 @@ public class GameController : MonoBehaviour
     public List<BasicPiece> currentPlayerPieces;
     public RoundController rc;
 
-
+    public Indicator WalkableIndicatorPrefab;
+    public Indicator ReachableIndicatorPrefab;
+    public List<Indicator> generatedIndicators;
     public BasicPiece currentSelectedPiece;
     void Start()
     {
-        
+        generatedIndicators = new List<Indicator>();
     }
 
     // Update is called once per frame
@@ -43,12 +45,21 @@ public class GameController : MonoBehaviour
                 BasicPiece bpSelected = hit.transform.GetComponent<BasicPiece>();
                 if(Input.GetKeyDown(KeyCode.Mouse0)){
                     if(currentSelectedPiece != bpSelected){
+                        DestryIndicators();
                         currentSelectedPiece = bpSelected;
+                        currentSelectedPiece.updateReachableList();
+                        currentSelectedPiece.updateWalkableList();
+                        
                         Debug.Log("SelectingPiece");
+                        //print(bpSelected.ReachableList);
+                        GenerateIndicatorOnReachableFaces(bpSelected.ReachableList);
+                        //print(bpSelected.WalkableList);
+                        GenerateIndicatorOnWalkableFaces(bpSelected.WalkableList);
                         //TODO: indicationg of selected piece
                     }else{
                         currentSelectedPiece = null;
                         Debug.Log("UnSelectingPiece");
+                        DestryIndicators();
                         //TODO: indication of selected piece disabled.
                     }
                 }
@@ -56,6 +67,34 @@ public class GameController : MonoBehaviour
         }
     }
 
+    
+    public void GenerateIndicatorOnWalkableFaces(List<Face> faces){
+        Debug.Log(faces.Count);
+        foreach(Face f in faces){
+            Indicator g = Instantiate(WalkableIndicatorPrefab, f.transform.position, Quaternion.identity);
+            g.generator = f;
+            
+            generatedIndicators.Add(g);
+        }
+    }
+    public void GenerateIndicatorOnReachableFaces(List<Face> faces){
+        foreach(Face f in faces){
+            Indicator g = Instantiate(ReachableIndicatorPrefab, f.transform.position, Quaternion.identity);
+            //Debug.Log(g);
+            g.generator = f;
+            generatedIndicators.Add(g);
+        }
+    }
+
+    public void DestryIndicators(){
+        for(int i = 0; i < generatedIndicators.Count; i ++){
+            Indicator ind = generatedIndicators[i];
+            DestroyImmediate(ind.gameObject);
+            
+        }
+        generatedIndicators = new List<Indicator>();
+        
+    }
     private void checkMouseSelectedPosition(){
         if(currentSelectedPiece == null) return;
         RaycastHit hit;
@@ -68,7 +107,8 @@ public class GameController : MonoBehaviour
             
             
             //TODO: inplement getPieceAvailable Move
-            
+
+
             List<Face> availableFaces = currentSelectedPiece.WalkableList;
             List<Face> attackableFaces =  currentSelectedPiece. ReachableList;;
             if(availableFaces.Contains(hit.transform.GetComponent<Face>())){
@@ -83,7 +123,7 @@ public class GameController : MonoBehaviour
             }
             if(attackableFaces.Contains(hit.transform.GetComponent<Face>())){
                 Face f = hit.transform.GetComponent<Face>();
-                BasicPiece p = Face.getCurrentPiece();
+                BasicPiece p = f.getCurrentPiece();
                 if(Input.GetKeyDown(KeyCode.Mouse0)){
                     currentSelectedPiece.Attack(p);
                     currentSelectedPiece = null;
