@@ -12,6 +12,7 @@ public class FaceControl : MonoBehaviour
     public bool isDragging = false;
     Camera _camera;
     public LayerMask layerMask;
+    ReadCube readCube;
 
     Collider[] _subCubes = new Collider[9];
     Vector3[] _originalPositions = new Vector3[9];
@@ -32,6 +33,7 @@ public class FaceControl : MonoBehaviour
 
     IEnumerator Start()
     {
+        readCube = FindObjectOfType<ReadCube>();
         _camera = Camera.main;
         Vector3 camForward = _camera.transform.forward;
         float axisSign = Mathf.Sign(camForward.x * camForward.y * camForward.z);
@@ -190,6 +192,7 @@ public class FaceControl : MonoBehaviour
                 yield return null;
             }
             isDragging = false;
+            readCube.ReadState();
         }
     }
 
