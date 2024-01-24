@@ -50,13 +50,10 @@ public abstract class BasicPiece : MonoBehaviour
         }
     }  
     protected void LookAtWithFrozenAxis(Vector3 target){
-        Vector3 up = transform.up;
-        //Debug.Log(transform.up);
         Vector3 Direction = target - transform.position;
         Vector3 diff = Vector3.Project(Direction, transform.up);
         Vector3 newDir = Direction - diff;
         float angle = Vector3.SignedAngle(newDir, transform.forward,Vector3.up);
-        //Debug.Log(angle);
         
         if( transform.up.y >=0f ){
             transform.localEulerAngles =  transform.localEulerAngles - new Vector3(0f,angle,0f);

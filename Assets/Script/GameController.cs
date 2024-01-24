@@ -52,10 +52,8 @@ public class GameController : MonoBehaviour
         int layer_mask = LayerMask.GetMask("Piece","Square");
         if ( Physics.Raycast (ray,out hit,100.0f, layer_mask)) {
             if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Square")){
-                Debug.Log("NotDirectlyOnChessPiece");
                 return;
             }
-            Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object  
             //CHeck for input to select piece
             if(currentPlayerPieces.Contains(hit.transform.GetComponent<BasicPiece>()) && hit.transform.GetComponent<BasicPiece>().isUsable){
                 BasicPiece bpSelected = hit.transform.GetComponent<BasicPiece>();
@@ -67,8 +65,7 @@ public class GameController : MonoBehaviour
                         currentSelectedPiece = bpSelected;
                         currentSelectedPiece.updateReachableList();
                         currentSelectedPiece.updateWalkableList();
-                        
-                        Debug.Log("SelectingPiece");
+
                         //print(bpSelected.ReachableList);
                         GenerateIndicatorOnReachableFaces(bpSelected.ReachableList);
                         //print(bpSelected.WalkableList);
@@ -78,7 +75,6 @@ public class GameController : MonoBehaviour
                     }else{
                         KeySelected = false;
                         currentSelectedPiece = null;
-                        Debug.Log("UnSelectingPiece");
                         
                         DestryIndicators();
                         
@@ -90,7 +86,6 @@ public class GameController : MonoBehaviour
 
     
     public void GenerateIndicatorOnWalkableFaces(List<Face> faces){
-        Debug.Log(faces.Count);
         foreach(Face f in faces){
             Indicator g = Instantiate(WalkableIndicatorPrefab, f.transform.position, Quaternion.identity);
             g.generator = f;
@@ -101,7 +96,6 @@ public class GameController : MonoBehaviour
     public void GenerateIndicatorOnReachableFaces(List<Face> faces){
         foreach(Face f in faces){
             Indicator g = Instantiate(ReachableIndicatorPrefab, f.transform.position, Quaternion.identity);
-            //Debug.Log(g);
             g.generator = f;
             generatedIndicators.Add(g);
         }
@@ -123,11 +117,7 @@ public class GameController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         int layer_mask = LayerMask.GetMask("Square");
         if ( Physics.Raycast (ray,out hit,100.0f, layer_mask)){
-            
-            Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
 
-            
-            
             //TODO: inplement getPieceAvailable Move
 
 

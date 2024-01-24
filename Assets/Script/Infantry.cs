@@ -16,18 +16,13 @@ public class Infantry : BasicPiece
         ReachableList = new List<Face>();
         foreach (Face f in availableFace){
             if(f.transform.childCount > 0){
-                Debug.Log("hasChild On Face");
                 if(holder.pieces.Contains(f.transform.GetChild(0).gameObject.GetComponent<BasicPiece>())){
-                    Debug.Log("Is same side");
                     continue;
                 }
 
                 ReachableList.Add(f);
             }
         }
-        //Debug.Log(ReachableList.Count);
-        
-        
     }
 
 

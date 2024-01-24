@@ -30,7 +30,6 @@ public class CubeState : MonoBehaviour
 
     public void PickUp(List<GameObject> cubeSide)
     {
-        Debug.Log("picking up");
         foreach (GameObject face in cubeSide)
         {
             // Attach the parent of each face (the little cube)
@@ -45,7 +44,6 @@ public class CubeState : MonoBehaviour
 
     public void PutDown(List<GameObject> littleCubes, Transform pivot)
     {
-        Debug.Log("putting down");
         foreach (GameObject littleCube in littleCubes)
         {
             if (littleCube != littleCubes[4])
@@ -89,9 +87,6 @@ public class CubeState : MonoBehaviour
 
             fullStateString += sideString + "\n"; // Append each side's string to the full state string
         }
-
-        Debug.Log(fullStateString); // Log the entire state in one message
-
     }
 
 

@@ -134,12 +134,9 @@ public class Face : MonoBehaviour
       // Add the two adjacent faces on the same side
 
     }
-
-    // Add the faces from the GameObject's parent's other enabled children
     GameObject currentGameObject = this.gameObject;
     if (currentGameObject != null && currentGameObject.transform.parent.gameObject != null)
     {
-      //Debug.Log(currentGameObject.transform.parent);
       foreach (Transform sibling in currentGameObject.transform.parent)
       {
         if (sibling.gameObject != currentGameObject && sibling.gameObject.activeSelf)
@@ -350,18 +347,13 @@ public class Face : MonoBehaviour
     int currentPositionX = previousPosition.initx;
     int currentPositionY = previousPosition.inity;
     var currentSide = previousPosition.initside;
-    Debug.Log("INITIAL: " + currentSide);
     for (int i = 0; i < unitMovementVectors.Count; i++)
     {
-      Debug.Log(i);
-      Debug.Log((currentPositionX, currentPositionY));
       int expectedx = currentPositionX;
       int expectedy = currentPositionY;
       expectedx += unitMovementVectors[i].moveX;
       expectedy += unitMovementVectors[i].moveY;
-      Debug.Log("Raw direction vector: " + (unitMovementVectors[i].moveX, unitMovementVectors[i].moveY))
 ; var direction = GetDirection(unitMovementVectors[i].moveX, unitMovementVectors[i].moveY);
-      Debug.Log(direction);
       if (InCurrentSide(expectedx, expectedy, direction))
       {
         var modifiedTuple = CubeTuple((unitMovementVectors[i].moveX, unitMovementVectors[i].moveY));
@@ -372,28 +364,21 @@ public class Face : MonoBehaviour
       else
       {
         var targetSide = GetAdjacentSide(currentSide, direction);
-        Debug.Log("Target Side: " + targetSide);
         //map new side index, add to movementSteps, modify current position after add in list movements
         var positionOnNewSide = GetNewSideFirstPosition((currentPositionX, currentPositionY), direction, currentSide);
         movementSteps.Add((targetSide, positionOnNewSide.finalx, positionOnNewSide.finaly));
         currentPositionX = positionOnNewSide.finalx;
         currentPositionY = positionOnNewSide.finaly;
         currentSide = targetSide;
-        Debug.Log("Updated current Side: " + currentSide);
 
         Matrix4x4 transformation = ModifyTuple(previousPosition.initside, targetSide);
-        //Debug.Log(transformation);
         for (int j = i + 1; j < unitMovementVectors.Count; j++)
         {
-          //Debug.Log(unitMovementVectors[j]);
           Vector4 temp = new Vector4();
           temp.x = unitMovementVectors[j].moveX;
           temp.y = unitMovementVectors[j].moveY;
-          //Debug.Log(temp);
           temp = transformation * temp;
-          //Debug.Log(temp);
           unitMovementVectors[j] = ((int)temp.x, (int)temp.y);
-          //Debug.Log(unitMovementVectors[j]);
         }
       }
     }
@@ -453,9 +438,6 @@ public class Face : MonoBehaviour
           string kid = faceName.Split("-")[1];
           GameObject parentname = GameObject.Find(parent);
           Transform child = parentname.transform.Find(kid);
-
-          Debug.Log(child.gameObject.GetComponent<Face>());
-          //child.gameObject.GetComponent<Face>();
           faceList.Add(child.gameObject.GetComponent<Face>());
         }
       }
@@ -690,7 +672,6 @@ public class Face : MonoBehaviour
 
   public string GetDirection(int x, int y)
   {
-    Debug.Log("Getting Direction");
     if (x != 0) // The vector is horizontal
     {
       return x > 0 ? "Right" : "Left";
@@ -732,7 +713,6 @@ public class Face : MonoBehaviour
 
   public string GetAdjacentSide(string currentSide, string direction)
   {
-    Debug.Log("PASSING IN DIRECTION" + direction);
     switch (currentSide)
     {
       case "Front":
@@ -761,7 +741,6 @@ public class Face : MonoBehaviour
           case "Up": return "Back";
           case "Down":
             {
-              Debug.Log("WE ARE HERE");
               return "Front";
             }
 
@@ -776,7 +755,6 @@ public class Face : MonoBehaviour
 
           case "Up":
             {
-              Debug.Log("WE ARE HERE");
               return "Front";
             }
           case "Down": return "Back";

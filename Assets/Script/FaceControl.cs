@@ -98,7 +98,7 @@ public class FaceControl : MonoBehaviour
             Vector3 extents = Vector3.one - 0.9f * rotationAxis;
             extents = extents * 2.0f;
             int subCubeCount = Physics.OverlapBoxNonAlloc(hit.collider.transform.position, extents, _subCubes, Quaternion.identity, layerMask);
-            if (subCubeCount == 8)
+            if (subCubeCount <= 8)
             {
                 continue;
             }

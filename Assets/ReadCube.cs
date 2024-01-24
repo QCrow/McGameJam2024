@@ -38,7 +38,6 @@ public class ReadCube : MonoBehaviour
         //debug
         List<(int, int)> movementVectors = new List<(int, int)> { (0,1), (1,0), (1,0)};
         var result = cubeState.front[0].GetComponent<Face>().GetAllPossiblepositions("car", 2, ("Front", 1, 1));
-        //Debug.Log(result.Count);
         foreach(var x in result)
         {
             var r = "";
@@ -46,7 +45,6 @@ public class ReadCube : MonoBehaviour
             {
                 r += y.ToString();
             }
-            Debug.Log(r);
         }
     }
 
